@@ -1,18 +1,13 @@
 "use client"
 
-import { Box, Flex, Button, useMediaQuery } from '@chakra-ui/react';
-import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import Link from "next/link";
+import { Box, Flex, Button, useMediaQuery, IconButton, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-
-const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Portofolio", href: "/portofolio" },
-    { name: "Blog", href: "/blog" },
-    { name: "Profile", href: "/profile" },
-];
+import { useEffect, useState } from "react";
+import { navLinks } from '@/data/navigation-data';
+import { socialMediaLinks } from '@/data/social.media-data';
+import { faBars } from '@fortawesome/free-solid-svg-icons'; // Import the hamburger menu icon
+import Link from 'next/link';
 
 const Navbar = () => {
     const pathName = usePathname();
@@ -41,24 +36,21 @@ const Navbar = () => {
                 justify="space-between"
                 wrap="wrap"
                 padding="1.5rem"
+                transition="background-color 0.5s ease-out, color 0.5s ease-out, border-radius 0.5s ease-out"
                 bg={scrolled ? "white" : "#262828"}
                 color={scrolled ? "black" : "white"}
                 borderRadius={scrolled ? "0" : "50"}
-                boxShadow={5}
+                boxShadow={'xl'}
                 position={'sticky'}
                 top={'0'}
                 zIndex={'999'}
             >
                 <Flex gap={5}>
-                    <Link href='#' target='_blank' title='Github'>
-                        <FontAwesomeIcon icon={faGithub} size="lg" />
-                    </Link>
-                    <Link href='#' target='_blank' title='LinkedIn'>
-                        <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
-                    </Link>
-                    <Link href='#' target='_blank' title='Instagram'>
-                        <FontAwesomeIcon icon={faInstagram} size="lg" />
-                    </Link>
+                    {socialMediaLinks.map((index) => (
+                        <Link href={index.href} target='_blank' title={index.title} key={index.title}>
+                            <FontAwesomeIcon icon={index.icon} size="lg" />
+                        </Link>
+                    ))}
                 </Flex>
                 {isLargerThan768 ? (
                     <Flex align="center" gap={2.5}>
@@ -80,9 +72,29 @@ const Navbar = () => {
                     </Flex>
                 ) : (
                     <Flex align="center" justifyContent="flex-end" flex="1">
-                        <Button color={scrolled ? "black" : "white"} borderRadius={50} size='sm' borderColor={scrolled ? "black" : "white"} variant='outline' _hover={scrolled ? { bg: "black", color: "white" } : { bg: "white", color: "black" }} borderWidth={2} transition="background-color 0.5s ease-out, border-color 0.5s ease-out">
-                            Menu
-                        </Button>
+                        <Menu>
+                            <MenuButton
+                                as={IconButton}
+                                aria-label="Options"
+                                icon={<FontAwesomeIcon icon={faBars} />}
+                                colorScheme="transparent"
+                                variant="ghost"
+                                _hover={{ color: scrolled ? "black" : "white" }}
+                                _active={{ color: scrolled ? "black" : "white" }}
+                            />
+                            <MenuList w={'85vw'} mt={10} mx={5}>
+                                {navLinks.map((link, index) => (
+                                    <Link href={link.href} key={index} passHref>
+                                        <MenuItem
+                                            color={scrolled ? "black" : "black"}
+                                            _hover={{ bg: scrolled ? "black" : "white", color: scrolled ? "white" : "black" }}
+                                        >
+                                            {link.name}
+                                        </MenuItem>
+                                    </Link>
+                                ))}
+                            </MenuList>
+                        </Menu>
                     </Flex>
                 )}
             </Flex>

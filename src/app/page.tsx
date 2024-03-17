@@ -1,14 +1,18 @@
-import { Box, Heading, Text, Button, Container, Flex, Image, Card, Grid, GridItem, Center, Divider } from '@chakra-ui/react';
-import { faGithub, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { socialMediaLinks } from '@/data/social.media-data';
+import { Box, Heading, Text, Button, Flex, Image, Card, Grid, GridItem, Center, Divider } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from "next/link";
 
 const Home = () => {
   return (
     <>
-      <Box mx={10}>
-        <Flex h={'75vh'} justifyContent='space-around' alignContent='center' alignItems='center'>
+      <Box>
+        <Flex h={'75vh'} justifyContent='space-around' alignContent='center' alignItems='center' align="center"
+          justify="center"
+          bg={`url('/images/bg-home.svg')`}
+          backgroundRepeat="no-repeat"
+          backgroundSize="cover"
+          backgroundPosition="center">
           <Flex direction={'column'}>
             <Heading as='h2' size='xl'>
               Hello,
@@ -17,7 +21,7 @@ const Home = () => {
               I'm Muhammad Idris
             </Heading>
             <Text mt={2.5}>
-              Fullstack Developer | Travel Enthusiast
+              Programmer | Travel Enthusiast
             </Text>
           </Flex>
           <Image
@@ -25,7 +29,7 @@ const Home = () => {
             boxSize={250}
             src='https://bit.ly/dan-abramov'
             alt='Profile Picture'
-            boxShadow={5}
+            boxShadow={'md'}
           />
         </Flex>
 
@@ -44,9 +48,9 @@ const Home = () => {
               <Text mb={5}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, totam natus enim inventore ut dignissimos provident sapiente nemo animi, laboriosam illo iure voluptates accusantium? Necessitatibus libero quo provident odio rem?
               </Text>
-              <Link href="#">
+              <Link href="/profile">
                 <Button size={'sm'}>
-                  See Portofolio
+                  See Profile
                 </Button>
               </Link>
             </Box>
@@ -172,21 +176,17 @@ const Home = () => {
         </Box>
       </Box>
 
-      <Box bg={'rgba(255, 255, 255, 0.75)'} color={'black'} p={5} boxShadow={10} my={5} h={150}>
+      <Box bg={'white'} color={'black'} p={5} boxShadow={10} my={5} h={150}>
         <Flex flexDir={'row'} justifyContent={'space-between'} alignContent={'center'} alignSelf={'center'} alignItems={'center'} px={25} h={"100%"}>
           <Heading as='h3' size='lg' textAlign={'center'} m={0}>
             Find Me on Social Networks
           </Heading>
           <Flex mt={5} gap={5}>
-            <Link href='#' target='_blank' title='Github'>
-              <FontAwesomeIcon icon={faGithub} size="2xl" />
-            </Link>
-            <Link href='#' target='_blank' title='LinkedIn'>
-              <FontAwesomeIcon icon={faLinkedinIn} size="2xl" />
-            </Link>
-            <Link href='#' target='_blank' title='Instagram'>
-              <FontAwesomeIcon icon={faInstagram} size="2xl" />
-            </Link>
+            {socialMediaLinks.map((index) => (
+              <Link href={index.href} target='_blank' title={index.title}>
+                <FontAwesomeIcon icon={index.icon} size="2xl" />
+              </Link>
+            ))}
           </Flex>
         </Flex>
       </Box>
