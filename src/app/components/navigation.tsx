@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navLinks } from '@/data/navigation-data';
 import { socialMediaLinks } from '@/data/social.media-data';
-import { faBars } from '@fortawesome/free-solid-svg-icons'; // Import the hamburger menu icon
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -47,7 +47,7 @@ const Navbar = () => {
             >
                 <Flex gap={5}>
                     {socialMediaLinks.map((index) => (
-                        <Link href={index.href} target='_blank' title={index.title} key={index.title}>
+                        <Link href={index.href} target='_blank' title={index.title} key={index.href}>
                             <FontAwesomeIcon icon={index.icon} size="lg" />
                         </Link>
                     ))}
@@ -82,12 +82,13 @@ const Navbar = () => {
                                 _hover={{ color: scrolled ? "black" : "white" }}
                                 _active={{ color: scrolled ? "black" : "white" }}
                             />
-                            <MenuList w={'85vw'} mt={10} mx={5}>
+                            <MenuList w={'100%'} m={5}>
                                 {navLinks.map((link, index) => (
                                     <Link href={link.href} key={index} passHref>
                                         <MenuItem
-                                            color={scrolled ? "black" : "black"}
-                                            _hover={{ bg: scrolled ? "black" : "white", color: scrolled ? "white" : "black" }}
+                                            bg={isActive(link.href) ? "black" : "transparent"}
+                                            color={isActive(link.href) ? "white" : "black"}
+                                            _hover={{ bg: "black", color: "white" }}
                                         >
                                             {link.name}
                                         </MenuItem>

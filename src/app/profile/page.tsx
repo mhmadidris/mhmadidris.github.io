@@ -22,23 +22,23 @@ const Profile = () => {
                 flexDir={'column'}
                 pb={'10rem'}
             >
-                <Box w={'50vw'}>
+                <Box w={{ base: '90%', sm: '80%', md: '70%', lg: '50%' }}>
                     <Heading textAlign={'center'} as='h2' size='xl' fontFamily={satisfy.style.fontFamily}>
                         Hello Everyone
                     </Heading>
                     <Text textAlign={'center'} my={5}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae a, totam aut quod voluptas assumenda eligendi voluptatem voluptatum libero perspiciatis nesciunt quae aspernatur.
                     </Text>
-                    <Flex justifyContent={'center'} alignContent={'center'} alignItems={'center'} gap={2}>
-                        <Button size="sm" borderRadius="full" bg={'white'}>
+                    <Flex flexDir={{ base: 'column-reverse', md: 'row' }} justifyContent={'center'} alignContent={'center'} alignItems={'center'} gap={2}>
+                        <Button size={{ base: "sm", md: "md" }} borderRadius="full" bg={'white'}>
                             Download CV
                         </Button>
-                        <Center height='25px'>
+                        <Center display={{ base: 'none', md: 'block' }} height='25px'>
                             <Divider orientation='vertical' />
                         </Center>
-                        <Flex gap={5}>
+                        <Flex mb={{ base: '2.5', md: '0' }} gap={5}>
                             {socialMediaLinks.map((index) => (
-                                <Link href={index.href} target='_blank' title={index.title}>
+                                <Link key={index.title} href={index.href} target='_blank' title={index.title}>
                                     <FontAwesomeIcon icon={index.icon} size="xl" />
                                 </Link>
                             ))}
@@ -47,10 +47,11 @@ const Profile = () => {
                 </Box>
             </Flex>
 
-
             <ModernTechnology />
 
-            <PortofolioWidget />
+            <Box py={10} bg={'white'}>
+                <PortofolioWidget isProfile={true} />
+            </Box>
         </>
     );
 };

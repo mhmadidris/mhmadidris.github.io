@@ -2,34 +2,42 @@ import { socialMediaLinks } from '@/data/social.media-data';
 import { Box, Heading, Text, Button, Flex, Image, Card, Grid, GridItem, Center, Divider } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from "next/link";
+import BlogSlider from './components/blog-slider';
+import PortofolioWidget from './components/portofolio';
 
 const Home = () => {
   return (
     <>
       <Box>
-        <Flex h={'75vh'} justifyContent='space-around' alignContent='center' alignItems='center' align="center"
+        <Flex
+          h="75vh"
+          justifyContent={{ base: "center", md: "space-around" }}
+          alignContent="center"
+          alignItems="center"
           justify="center"
           bg={`url('/images/bg-home.svg')`}
           backgroundRepeat="no-repeat"
           backgroundSize="cover"
-          backgroundPosition="center">
-          <Flex direction={'column'}>
-            <Heading as='h2' size='xl'>
-              Hello,
+          backgroundPosition="center"
+          direction={{ base: "column-reverse", md: "row" }}
+          pb={{ base: 10, md: 0 }}
+        >
+          <Flex direction="column" textAlign={{ base: 'center', md: 'left' }} alignItems={{ base: 'center', md: 'flex-start' }}>
+            <Heading as="h2" size="xl">
+              Hello
             </Heading>
-            <Heading as='h2' size='2xl'>
+            <Heading size={{ base: 'lg', md: '2xl' }}>
               I'm Muhammad Idris
             </Heading>
-            <Text mt={2.5}>
-              Programmer | Travel Enthusiast
-            </Text>
+            <Text mt={2.5}>Programmer | Travel Enthusiast</Text>
           </Flex>
           <Image
-            borderRadius='full'
-            boxSize={250}
-            src='https://bit.ly/dan-abramov'
-            alt='Profile Picture'
-            boxShadow={'md'}
+            borderRadius="full"
+            boxSize={{ base: 200, md: 250 }}
+            src="https://bit.ly/dan-abramov"
+            alt="Profile Picture"
+            boxShadow="md"
+            my={{ base: 5, md: 0 }}
           />
         </Flex>
 
@@ -40,19 +48,21 @@ const Home = () => {
             </Heading>
             <Divider borderWidth="2.5px" w={'5rem'} borderRadius={10} />
           </Flex>
-          <Flex mt={5} justifyContent="space-between" alignContent="center" alignItems="center">
-            <Box flex="1">
-              <Heading as='h3' size='lg' mb={2.5}>
+          <Flex mt={5} direction={{ base: "column-reverse", md: "row" }} justifyContent="space-between" alignContent="center" alignItems="center">
+            <Box flex="1" mt={{ base: "5", md: "0" }}>
+              <Heading as='h3' size='lg' mb={2.5} textAlign={{ base: "center", md: "start" }}>
                 Who I'm?
               </Heading>
-              <Text mb={5}>
+              <Text mb={5} textAlign={{ base: "center", md: "start" }}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, totam natus enim inventore ut dignissimos provident sapiente nemo animi, laboriosam illo iure voluptates accusantium? Necessitatibus libero quo provident odio rem?
               </Text>
-              <Link href="/profile">
-                <Button size={'sm'}>
-                  See Profile
-                </Button>
-              </Link>
+              <Flex justifyContent={{ base: "center", md: "start" }} alignItems={{ base: "center", md: "start" }}>
+                <Link href="/profile">
+                  <Button size={'sm'}>
+                    See Profile
+                  </Button>
+                </Link>
+              </Flex>
             </Box>
             <Box flex="1">
               <Center>
@@ -69,116 +79,14 @@ const Home = () => {
             </Heading>
             <Divider borderWidth="2.5px" w={'5rem'} borderRadius={10} />
           </Flex>
-          <Grid templateColumns='repeat(3, 1fr)' gap={5} mt={5} alignContent={'center'} justifyContent={'center'} justifyItems={'center'}>
-            <Link href='#'>
-              <Card w='20rem' bg='#353839' h={'20rem'} borderRadius={10} boxShadow={5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderTopRadius={10}
-                    width='100%'
-                    height='17.5rem'
-                    src='https://source.unsplash.com/random/1'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h5' size='sm' color='white' m={2}>
-                    (sm) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            <Link href='#'>
-              <Card w='20rem' bg='#353839' h={'20rem'} borderRadius={10} boxShadow={5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderTopRadius={10}
-                    width='100%'
-                    height='17.5rem'
-                    src='https://source.unsplash.com/random/1'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h5' size='sm' color='white' m={2}>
-                    (sm) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            <Link href='#'>
-              <Card w='20rem' bg='#353839' h={'20rem'} borderRadius={10} boxShadow={5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderTopRadius={10}
-                    width='100%'
-                    height='17.5rem'
-                    src='https://source.unsplash.com/random/1'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h5' size='sm' color='white' m={2}>
-                    (sm) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            <Link href='#'>
-              <Card w='20rem' bg='#353839' h={'20rem'} borderRadius={10} boxShadow={5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderTopRadius={10}
-                    width='100%'
-                    height='17.5rem'
-                    src='https://source.unsplash.com/random/1'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h5' size='sm' color='white' m={2}>
-                    (sm) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            <Link href='#'>
-              <Card w='20rem' bg='#353839' h={'20rem'} borderRadius={10} boxShadow={5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderTopRadius={10}
-                    width='100%'
-                    height='17.5rem'
-                    src='https://source.unsplash.com/random/1'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h5' size='sm' color='white' m={2}>
-                    (sm) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            <Link href='#'>
-              <Card w='20rem' bg='#353839' h={'20rem'} borderRadius={10} boxShadow={5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderTopRadius={10}
-                    width='100%'
-                    height='17.5rem'
-                    src='https://source.unsplash.com/random/1'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h5' size='sm' color='white' m={2}>
-                    (sm) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-          </Grid>
+
+          <PortofolioWidget isProfile={false} />
         </Box>
       </Box>
 
       <Box bg={'white'} color={'black'} p={5} boxShadow={10} my={5} h={150}>
-        <Flex flexDir={'row'} justifyContent={'space-between'} alignContent={'center'} alignSelf={'center'} alignItems={'center'} px={25} h={"100%"}>
-          <Heading as='h3' size='lg' textAlign={'center'} m={0}>
+        <Flex flexDir={{ base: "column", md: "row" }} justifyContent={{ base: 'center', md: 'space-between' }} alignContent={'center'} alignSelf={'center'} alignItems={'center'} px={25} h={"100%"}>
+          <Heading size={{ base: 'md', md: 'lg' }} textAlign={'center'} m={0}>
             Find Me on Social Networks
           </Heading>
           <Flex mt={5} gap={5}>
@@ -201,84 +109,8 @@ const Home = () => {
               <Button borderRadius={25} size={'sm'}>see all</Button>
             </Link>
           </Flex>
-          <Grid templateColumns='repeat(4, 1fr)' gap={5} mt={5} alignContent={'center'} justifyContent={'center'} justifyItems={'center'}>
-            <Link href='#'>
-              <Card w='16rem' bg='#0e1111' h={'16rem'} borderRadius={10} boxShadow={5} p={2.5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderRadius={2.5}
-                    width='100%'
-                    height='10rem'
-                    src='https://source.unsplash.com/random/1'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h4' size='md' my={2.5} color='white'>
-                    (md) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            <Link href='#'>
-              <Card w='16rem' bg='#0e1111' h={'16rem'} borderRadius={10} boxShadow={5} p={2.5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderRadius={2.5}
-                    width='100%'
-                    height='10rem'
-                    src='https://source.unsplash.com/random/2'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h4' size='md' my={2.5} color='white'>
-                    (md) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            <Link href='#'>
-              <Card w='16rem' bg='#0e1111' h={'16rem'} borderRadius={10} boxShadow={5} p={2.5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderRadius={2.5}
-                    width='100%'
-                    height='10rem'
-                    src='https://source.unsplash.com/random/3'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h4' size='md' my={2.5} color='white'>
-                    (md) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            <Link href='#'>
-              <Card w='16rem' bg='#0e1111' h={'16rem'} borderRadius={10} boxShadow={5} p={2.5}>
-                <GridItem display='flex' flexDirection='column' justifyContent='center' alignItems='start'>
-                  <Image
-                    borderRadius={2.5}
-                    width='100%'
-                    height='10rem'
-                    src='https://source.unsplash.com/random/3'
-                    alt='Picture'
-                    objectFit='cover'
-                  />
-                  <Heading as='h4' size='md' my={2.5} color='white'>
-                    (md) In love with React & Next
-                  </Heading>
-                </GridItem>
-              </Card>
-            </Link>
-            {/* <Link href='/blog' color='white'>
-    <Card w='16rem' bg='#0e1111' h={'16rem'} borderRadius={10} boxShadow={5} p={2.5} flexDir={'column'} justifyContent={'center'} alignContent={'center'} alignItems={'center'} color={'white'}>
-      <Heading as='h4' size='md' mb={2.5}>
-        see all
-      </Heading>
-      <FontAwesomeIcon icon={faCircleChevronRight} size='4x' />
-    </Card>
-  </Link> */}
-          </Grid>
+
+          <BlogSlider />
         </Box>
       </Box>
     </>
