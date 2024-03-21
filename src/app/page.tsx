@@ -99,7 +99,7 @@ const Home = () => {
         </Flex>
       </Box>
 
-      <Box mx={10}>
+      <Box mx={{ base: 5, md: 10 }}>
         <Box bg={'#414a4c'} borderRadius={5} p={5} boxShadow={10} my={5}>
           <Flex alignContent={'center'} justifyContent={'space-between'} alignItems={'center'} alignSelf={'center'}>
             <Heading as='h4' size='md'>

@@ -13,7 +13,7 @@ const ModernTechnology = () => {
             </Flex>
             <Wrap justifyContent={'center'} justifyItems={'center'} justify={'center'} alignContent={'center'} spacing={2}>
                 {modernTechnologiesData.map((index, i) => (
-                    <WrapItem key={i}>
+                    <WrapItem>
                         <Box border={'2px solid white'} px={3.5} py={1.5} borderRadius="full" color={'white'} minWidth="fit-content" maxWidth="fit-content" title={index.title}>
                             <Flex alignContent={'center'} alignItems={'center'} gap={1.5}>
                                 <FontAwesomeIcon icon={index.icon} size="lg" />

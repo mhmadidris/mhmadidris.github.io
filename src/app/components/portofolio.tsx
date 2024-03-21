@@ -1,6 +1,7 @@
 import { modernTechnologiesData } from "@/data/modern-technologies";
 import { portofolioData } from "@/data/portofolio-data";
-import { Box, Button, Card, CardBody, Divider, Flex, Grid, GridItem, Heading, Image, Link, SimpleGrid, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, Divider, Flex, Grid, GridItem, Heading, Image, SimpleGrid, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import Link from 'next/link';
 
 interface PortofolioProps {
     isProfile: boolean;
@@ -8,18 +9,18 @@ interface PortofolioProps {
 
 const PortofolioWidget: React.FC<PortofolioProps> = ({ isProfile }) => {
     return (
-        <Box mx={10}>
+        <Box mx={{ base: 5, md: 10 }}>
             <Flex display={isProfile ? 'flex' : 'none'} flexDir={'row'} justifyContent={'space-between'} alignContent={'center'} alignItems={'center'} color={'black'}>
                 <Heading as='h4' size='md'>
                     Portofolio
                 </Heading>
-                <Link href="#" textDecoration={'underline'} fontSize={15}>
+                <Link href="#">
                     View All
                 </Link>
             </Flex>
             <SimpleGrid columns={[1, 2, 3, 4]} spacing={5} mt={5}>
                 {portofolioData.slice(0, isProfile ? 4 : 8).map((index, i) => (
-                    <Link href={index.link} _hover={{ textDecoration: "none" }} title={index.title}>
+                    <Link href={index.link} title={index.title} passHref>
                         <Card bg='#353839' h={'20rem'} borderRadius={10} boxShadow={5}>
                             <GridItem position="relative">
                                 <Image
@@ -51,7 +52,7 @@ const PortofolioWidget: React.FC<PortofolioProps> = ({ isProfile }) => {
                                     </Heading>
                                     <Wrap spacing={2} mt={2.5}>
                                         {index.tags && index.tags.slice(0, 4).map((tag, tagIndex) => (
-                                            <WrapItem key={tagIndex}>
+                                            <WrapItem>
                                                 <Box bg="white" px={2.5} py={0.5} borderRadius="full" color="black" minWidth="fit-content" maxWidth="fit-content" title={tag} fontSize={10} textTransform="uppercase" fontWeight="bold">
                                                     #{tag}
                                                 </Box>

@@ -1,22 +1,17 @@
-import { Box, Button, Card, CardBody, Flex, GridItem, Heading, Image, Input, Link, Select, SimpleGrid, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, Flex, GridItem, Heading, Image, Input, Select, SimpleGrid, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import BlogSlider from "../components/blog-slider";
 import { portofolioData } from "@/data/portofolio-data";
 import { blogData } from "@/data/blog-data";
+import Link from 'next/link';
 
 const Blog = () => {
     return (
-        <Box mx={10}>
-            <Flex flexDir={{ base: 'column-reverse', md: 'row' }} justifyContent={'space-between'} alignContent={'center'} alignItems={'center'} color={'black'} gap={2.5}>
-                <Input placeholder='Search Something...' size='sm' bg={'white'} borderRadius={'full'} width={{ base: "100%", md: '85%' }} />
-                <Select value='option1' size='sm' bg={'white'} borderRadius={'full'} width={{ base: "100%", md: '15%' }}>
-                    <option value='option1'>Option 1</option>
-                    <option value='option2'>Option 2</option>
-                    <option value='option3'>Option 3</option>
-                </Select>
-            </Flex>
+        <Box mx={{ base: 5, md: 10 }}>
+            <Input placeholder='Search Something...' bg={'white'} borderRadius={'full'} width={'100%'} color={'black'} />
+
             <SimpleGrid columns={[1, 2, 3, 4]} spacing={5} my={5}>
                 {blogData.slice(0, 12).map((index, i) => (
-                    <Link href={index.link} _hover={{ textDecoration: "none" }} title={index.title}>
+                    <Link href={index.link} title={index.title} passHref>
                         <Card bg='#353839' h={'16.5rem'} borderRadius={10} boxShadow={5}>
                             <GridItem position="relative">
                                 <Image
@@ -46,7 +41,6 @@ const Blog = () => {
                                     <Heading as='h6' size='xs'>
                                         {`${index.title} ${i + 1}`}
                                     </Heading>
-
                                 </CardBody>
                             </GridItem>
                         </Card>

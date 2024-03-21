@@ -47,7 +47,7 @@ const Navbar = () => {
             >
                 <Flex gap={5}>
                     {socialMediaLinks.map((index) => (
-                        <Link href={index.href} target='_blank' title={index.title} key={index.href}>
+                        <Link href={index.href} target='_blank' title={index.title}>
                             <FontAwesomeIcon icon={index.icon} size="lg" />
                         </Link>
                     ))}
@@ -55,7 +55,7 @@ const Navbar = () => {
                 {isLargerThan768 ? (
                     <Flex align="center" gap={2.5}>
                         {navLinks.map((link, index) => (
-                            <Link href={link.href} key={index} passHref>
+                            <Link href={link.href} passHref>
                                 <Button
                                     bg={scrolled ? (isActive(link.href) ? "black" : "transparent") : (isActive(link.href) ? "white" : "transparent")}
                                     color={scrolled ? (isActive(link.href) ? "white" : "black") : (isActive(link.href) ? "black" : "white")}
@@ -84,7 +84,7 @@ const Navbar = () => {
                             />
                             <MenuList w={'100%'} m={5}>
                                 {navLinks.map((link, index) => (
-                                    <Link href={link.href} key={index} passHref>
+                                    <Link href={link.href} passHref>
                                         <MenuItem
                                             bg={isActive(link.href) ? "black" : "transparent"}
                                             color={isActive(link.href) ? "white" : "black"}

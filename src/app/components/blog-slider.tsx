@@ -4,9 +4,10 @@ import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Box, Card, CardBody, GridItem, Heading, Image, Link, Text } from "@chakra-ui/react";
+import { Box, Card, CardBody, GridItem, Heading, Image, Text } from "@chakra-ui/react";
 import '../style.css';
 import { blogData } from "@/data/blog-data";
+import Link from 'next/link';
 
 function SampleNextArrow(props: { className: any; style: any; onClick: any; }) {
     const { className, style, onClick } = props;
@@ -69,7 +70,7 @@ function BlogSlider() {
             <Slider {...settings}>
                 {blogData.slice(0, 6).map((index, i) => (
                     <Box px={1.5}>
-                        <Link href={index.link}>
+                        <Link href={index.link} passHref>
                             <Card bg='#0e1111' borderRadius={10} boxShadow={5}>
                                 <Image
                                     borderTopRadius={10}

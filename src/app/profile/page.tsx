@@ -38,7 +38,7 @@ const Profile = () => {
                         </Center>
                         <Flex mb={{ base: '2.5', md: '0' }} gap={5}>
                             {socialMediaLinks.map((index) => (
-                                <Link key={index.title} href={index.href} target='_blank' title={index.title}>
+                                <Link href={index.href} target='_blank' title={index.title}>
                                     <FontAwesomeIcon icon={index.icon} size="xl" />
                                 </Link>
                             ))}
